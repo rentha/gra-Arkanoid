@@ -46,11 +46,8 @@ void setup() {
 
 void draw() {
   background(200);
-  // rysuj platformę
   rect(platformX, platformY, platformW, platformH);
-  // rysuj dysk
   ellipse(ballX, ballY, ballD, ballD);
-  // rysuj klocki
   for (int i = 0; i < brickRows; i++) {
     for (int j = 0; j < brickColumns; j++) {
       if (bricks[i][j] == 1) {
@@ -86,14 +83,13 @@ for (int j = 0; j < brickColumns; j++) {
 if (bricks[i][j] == 1) {
 if (ballX > j * (brickW + brickGap) && ballX < (j+1) * (brickW + brickGap) && ballY + ballD/2 < i * (brickH + brickGap) + brickTop) {
 ballVY *= -1;
-bricks[i][j] = 0; // klocek zostaje zniszczony
+bricks[i][j] = 0;
 }
 }
 }
 }
 // sprawdzenie, czy gracz wygrał lub przegrał
 if (ballY > height) {
-// gracz przegrał
 fill(255, 0, 0);
 textSize(32);
 textAlign(CENTER);
@@ -101,7 +97,6 @@ text("Przegrałeś!", width/2, height/2);
 
 } else {
 boolean won = true;
-// sprawdź, czy zostały jeszcze jakieś klocki
 for (int i = 0; i < brickRows; i++) {
 for (int j = 0; j < brickColumns; j++) {
 if (bricks[i][j] == 1) {
@@ -114,7 +109,6 @@ break;
 }
 }
 if (won) {
-// gracz wygrał
 fill(0, 255, 0);
 textSize(32);
 textAlign(CENTER);
